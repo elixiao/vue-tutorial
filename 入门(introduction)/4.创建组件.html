@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建组件</title>
+    <style>
+        #app,.explanation {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            color:#333333;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <ol>
+        <todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+    </ol>
+</div>
+<div class="explanation">
+    没有接触 DOM 的情况下更新了应用的状态 - 所有的 DOM 操作都由 Vue 来处理，你写的代码只需要关注基本逻辑
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    Vue.component('todo-item', {
+        props:['todo'],
+        template: '<li>{{todo.text}}</li>'
+    });
+    const app = new Vue({
+        el: '#app',
+        data: {
+            groceryList: [
+                { text: 'Vegetables' },
+                { text: 'Cheese' },
+                { text: 'Whatever else humans are supposed to eat' }
+            ]
+        }
+    })
+</script>
+</body>
+</html>

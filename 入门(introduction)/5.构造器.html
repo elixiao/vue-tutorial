@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造器</title>
+    <style>
+        #app,.explanation {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            color:#333333;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    {{a}}
+    <!--{{vm.a = data.a}}-->
+</div>
+<div class="explanation">
+    在实例化 Vue 时，需要传入一个选项对象，它可以包含数据、模板、挂载元素、方法、生命周期钩子等选项。
+    Vue实例会代理data对象里所有属性，同时暴露了一些有用的实例属性和方法
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    const data = {a:1};
+    const vm = new Vue({
+        el: '#app',
+        data: data
+    })
+    console.log(vm.a === data.a)
+    vm.a = 2;
+    console.log(vm.$data === data) // -> true
+    console.log(vm.$el === document.getElementById('app')); // -> true
+    vm.$watch('a', function (newVal, oldVal) {
+        // 这个回调将在 `vm.a`  改变后调用
+    })
+
+</script>
+</body>
+</html>

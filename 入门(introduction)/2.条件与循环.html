@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件与循环</title>
+    <style>
+        #app,.explanation {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            color:#333333;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <div v-if="seen">
+       你能看见我吗？
+    </div>
+
+    <div>
+        <ol>
+            <li v-for="todo in todos">{{todo.text}}</li>
+        </ol>
+    </div>
+</div>
+
+<div class="explanation">
+    在控制台里，输入 app.todos.push({ text: 'New item' })。你会发现列表中多了一栏新内容。
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data: {
+            seen: true,
+            todos: [
+                { text: 'Learn JavaScript' },
+                { text: 'Learn Vue' },
+                { text: 'Build something awesome' }
+            ]
+        }
+    })
+</script>
+</body>
+</html>

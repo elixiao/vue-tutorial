@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据绑定</title>
+    <style>
+        #app,.explanation {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            color:#333333;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <div>
+        <input v-model="message" placeholder="">
+        {{ message }}
+    </div>
+    <div>
+        <span v-bind:title="hint">鼠标停留一下</span>
+    </div>
+</div>
+
+<div class="explanation">
+    v-bind属性是一个指令，所有带有v-开头的都是指令。
+</div>
+
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Vue，你好!',
+            hint:'这里有提示'
+        }
+    })
+</script>
+</body>
+</html>
